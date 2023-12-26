@@ -1,11 +1,13 @@
 :root {
-  --border-radius: 12px;
   --logo-color: #5D5D6D;
+  --bg-primary: #F0F0F5;
   --bg-secondary: #F3F5F6;
   --text-dark: #737380;
   --delete-color: #DE3838;
   --text-dark-inputs: #41414D;
   --others-orange-low: #FFA585;
+  --text-dark-price:#09090A;
+
   
 }
 

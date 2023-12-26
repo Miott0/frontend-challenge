@@ -5,6 +5,10 @@ import './page.module.css'
 import { FilterBar } from '@/components/Header/filter-bar'
 import styled from 'styled-components'
 
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ProductsList } from '@/components/Products/products-list'
+
+
 const MainContainer = styled.main`
 
   display: flex;
@@ -12,12 +16,20 @@ const MainContainer = styled.main`
   align-items: center;
   padding: 34px 160px;
   min-height: 100vh;
+  background: var(--bg-primary);
 `
 
 export default function Home() {
+
+  const client = new QueryClient()
   return (
-    <MainContainer>
-      <FilterBar/>
-    </MainContainer>
+    
+    <QueryClientProvider client={ client }>
+      <MainContainer>
+        <FilterBar/>
+        <ProductsList/>   
+      </MainContainer>
+    </QueryClientProvider>
+    
   )
 }
