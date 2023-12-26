@@ -32,11 +32,12 @@ const Logo = styled.a`
     font-size: 40px;
     font-weight: 400;
     line-height: 150%;
+    text-decoration: none;
 `
 export function Header(props: HeaderProps){
     return(
         <TagHeader>
-            <Logo className={sairaStencil.className}>Capputeeno</Logo>
+            <Logo className={sairaStencil.className} href="/">Capputeeno</Logo>
 
             <div>
                 <PrimaryInputWSearchIcon placeholder="Procurando por algo específico?"/>
