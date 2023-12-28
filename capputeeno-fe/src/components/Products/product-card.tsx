@@ -52,7 +52,7 @@ div {
         height: 1px;
         margin: 8px 0;
         padding: 0px;
-        background: var(--shapes);
+        background: black;
     }
 }
 `
