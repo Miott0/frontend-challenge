@@ -3,7 +3,7 @@
 import styled from "styled-components"
 import { ArrowIconDown } from "./arrow-icon-down"
 import { useState } from "react"
-import { UseFilterContext } from "@/hooks/useFilterContext"
+import { UseFilter } from "@/hooks/useFilter"
 import { PriorityType } from "@/types/priority-types"
 
 const FilterContainer = styled.div`
@@ -39,6 +39,7 @@ const PriorityFilter = styled.ul`
     width:200px;
     top:100%;
     left: 0px;
+    z-index: 999;
     
     padding: 12px 16px;
     border-radius: 0.25rem;
@@ -56,7 +57,7 @@ const PriorityFilter = styled.ul`
 
 export function FilterByPriority(){
     const [isOpen, setIsOpen] = useState(false)
-    const {setPriority} = UseFilterContext()
+    const {setPriority} = UseFilter()
    
     const hanldeUpdatePriority = (value: PriorityType) => {
         setPriority(value)
@@ -74,10 +75,9 @@ export function FilterByPriority(){
             {isOpen && 
                 <PriorityFilter>
                     <li onClick={ () => hanldeUpdatePriority(PriorityType.NEWS)}>Novidades</li>
-                    <li onClick={ () => hanldeUpdatePriority(PriorityType.BIG_PRICE)}>Preço: Maior - menor</li>
+                    <li onClick={ () => hanldeUpdatePriority(PriorityType.BIGGEST_PRICE)}>Preço: Maior - menor</li>
                     <li onClick={ () => hanldeUpdatePriority(PriorityType.MINOR_PRICE)}>Preço: Menor - maior</li>
                     <li onClick={ () => hanldeUpdatePriority(PriorityType.POPULARITY)}>Mais vendidos</li>
-
                 </PriorityFilter> 
             }
         </FilterContainer>
