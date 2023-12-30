@@ -1,11 +1,7 @@
 'use client'
 
-import Image from 'next/image'
-import './page.module.css'
 import { FilterBar } from '@/components/Header/filter-bar'
 import styled from 'styled-components'
-
-import { QueryClient, QueryClientProvider } from 'react-query'
 import { ProductsList } from '@/components/Products/products-list'
 
 
@@ -14,22 +10,20 @@ const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 34px 160px;
+  padding: 12px 24px;
   min-height: 100vh;
   background: var(--bg-primary);
+
+  @media(min-width: ${props => props.theme.desktopBreakpoint}){
+    padding: 34px 160px;
+  }
 `
 
 export default function Home() {
-
-  const client = new QueryClient()
   return (
-    
-    <QueryClientProvider client={ client }>
-      <MainContainer>
-        <FilterBar/>
-        <ProductsList/>   
-      </MainContainer>
-    </QueryClientProvider>
-    
+    <MainContainer>
+      <FilterBar/>
+      <ProductsList/>   
+    </MainContainer>
   )
 }
