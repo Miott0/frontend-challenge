@@ -1,5 +1,5 @@
-export enum PriorityType{
-    'POPULARITY', 
+export enum PriorityTypes {
+    'POPULARITY',
     'NEWS',
     'MINOR_PRICE',
     'BIGGEST_PRICE'

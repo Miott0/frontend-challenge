@@ -1,7 +1,7 @@
 import { ProductsFetchResponse } from "@/types/products-response";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios";
-import { UseFilter } from "./useFilter";
+import { useFilter } from "./useFilter";
 import {  mountQuery } from "@/utils/graphql-filters";
 import { useDeferredValue } from "react";
 
@@ -12,12 +12,13 @@ const fetcher = (query: string): AxiosPromise<ProductsFetchResponse> => {
 }
 
 export function useProducts(){
-    const { type, priority, search } = UseFilter()
+    const { type, priority, search } = useFilter()
     const searchDeferred = useDeferredValue(search)
     const query = mountQuery(type, priority)
     const { data } = useQuery({
       queryFn: () => fetcher(query),
-      queryKey: ['products', type, priority]
+      queryKey: ['products', type, priority],
+      staleTime: 1000 * 60 * 1
     })
 
     const products =  data?.data?.data?.allProducts
